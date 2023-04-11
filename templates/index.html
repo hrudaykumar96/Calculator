@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: maroon;
+        }
+
+
+        button {
+            font-size: 20px;
+            background-color: black;
+            color: wheat;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 55px;
+            width: 85px;
+        }
+
+        input {
+            padding: 5px;
+            text-align: right;
+            color: rgba(219, 20, 20, 0.944);
+            background-color: silver;
+            width: 330px;
+            height: 35px;
+            font-size: 25px;
+            font-weight: bold;
+            border: 7px solid black;
+        }
+
+        table {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+        }
+        button:hover{
+            background-color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <div class="display">
+            <tr>
+                <td colspan="4"><input type="text" id="display" placeholder="0"></td>
+            </tr>
+        </div>
+        <div class="buttons">
+            <tr>
+                <td><button type="button" onclick="del()">DEL</button></td>
+                <td><button type="button" onclick="per()">%</button></td>
+                <td><button type="button" onclick="show('00')">00</button></td>
+                <td><button type="button" onclick="ac()">AC</button></td>
+            </tr>
+        </div>
+        <div class="buttons">
+            <tr>
+                <td><button type="button" onclick="show('7')">7</button></td>
+                <td><button type="button" onclick="show('8')">8</button></td>
+                <td><button type="button" onclick="show('9')">9</button></td>
+                <td><button type="button" onclick="show('*')">*</button></td>
+            </tr>
+        </div>
+        <div class="buttons">
+            <td><button type="button" onclick="show('4')">4</button></td>
+            <td><button type="button" onclick="show('5')">5</button></td>
+            <td><button type="button" onclick="show('6')">6</button></td>
+            <td><button type="button" onclick="show('-')">-</button></td>
+            </tr>
+        </div>
+        <div class="buttons">
+            <td><button type="button" onclick="show('1')">1</button></td>
+            <td><button type="button" onclick="show('2')">2</button></td>
+            <td><button type="button" onclick="show('3')">3</button></td>
+            <td><button type="button" onclick="show('+')">+</button></td>
+            </tr>
+        </div>
+        <div class="buttons">
+            <td><button type="button" onclick="show('0')">0</button></td>
+            <td><button type="button" onclick="show('.')">.</button></td>
+            <td><button type="button" onclick="cal()">=</button></td>
+            <td><button type="button" onclick="show('/')">/</button></td>
+            </tr>
+        </div>
+    </table>
+    <script>
+        function show(input) {
+            document.getElementById("display").value += input;
+        }
+        function ac() {
+            document.getElementById("display").value = ""
+        }
+        function cal() {
+            var output = eval(document.getElementById("display").value);
+            document.getElementById("display").value = output;
+        }
+        function per() {
+            var a = (document.getElementById("display").value) * 100;
+            document.getElementById("display").value = a
+        }
+        function del() {
+            let currentDisplay = document.getElementById("display").value
+            document.getElementById("display").value = currentDisplay.substring(0, currentDisplay.length - 1);
+        }
+    </script>
+</body>
+
+</html>
